@@ -2,6 +2,11 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 //router is an object in express. And the Router() creates a new router object.
+const createDB = require("../config/db");
+
+createDB.sync().then(() => {
+    console.log("DB is running!");
+});
 
 const users = {};
 router.post("/signup", async (req, res) => {

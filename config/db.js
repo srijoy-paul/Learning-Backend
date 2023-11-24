@@ -1,11 +1,11 @@
-const { sequelize } = require("sequelize");
+const { Sequelize } = require("sequelize");
 require('dotenv').config();
 
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
-const createDB = new sequelize("users-info-DB", username, password, {
+const createDB = new Sequelize("users-info-DB", username, password, {
     dialect: "sqlite",
-    host: "./db.sqlite",
+    host: "./config/db.sqlite",
 });
-modules.exports = createDB;
+module.exports = createDB;

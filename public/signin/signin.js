@@ -1,10 +1,13 @@
 console.log("signin");
+// const { router, isSignedIn, signedInUserEmail } = require("../../Routes/AppRoutes");
 const signinButton = document.getElementById("signin-btn");
+const editButton = document.getElementById("edit-btn");
 const email = document.getElementById("email");
 const password = document.getElementById("pswd");
 
+let user;
 signinButton.addEventListener("click", async () => {
-    let user = {
+    user = {
         email: email.value,
         password: password.value,
     }
@@ -19,4 +22,14 @@ signinButton.addEventListener("click", async () => {
     })
     let message = await request.text();
     alert(message);
+    if (message === "Sign in Successful") {
+        editButton.disabled = false;
+    }
+    else {
+        editButton.disabled = true;
+    }
+});
+
+editButton.addEventListener("click", () => {
+    window.location.href = '../edit/edit.html';
 })

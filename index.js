@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 //created an express app
-const routes = require("./Routes/AppRoutes")
+const { router, isSignedIn, signedInUserEmail } = require("./Routes/AppRoutes")
 const cors = require("cors");
 
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 // this will make url for the html files, by using their path names in the public directory, the html file having name index in the specified(public) directory will be mapped to the base URL.
 
-app.use("/api/v1", routes)
+app.use("/api/v1", router)
 
 //create a port and listen on that port number
 const PORT = 3000;
